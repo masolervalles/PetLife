@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --petlife-primary: #21878F;
+  --petlife-coral: #F3705C;
+  --petlife-ochre: #D4A757;
+  --petlife-dark: #1A2A3A;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: #F7F9FA;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Mobile shell — centers the app on wide screens */
+#root {
+  display: flex;
+  justify-content: center;
+  min-height: 100dvh;
+  background: #E2E8F0;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  position: relative;
+  background: #F7F9FA;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.15);
+}
+
+/* Page transitions */
+.page {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar hide */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Badge pill */
+.badge {
+  @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold;
+}
+
+/* Tap state */
+.tap-active:active { transform: scale(0.97); transition: transform 0.1s; }
+
+/* Bottom nav safe area */
+.bottom-nav {
+  padding-bottom: max(12px, var(--safe-bottom));
+}
+
+/* Star rating */
+.stars { color: #D4A757; }
+
+/* Emotion chip */
+.emotion-chip {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium;
+  background: rgba(33, 135, 143, 0.1);
+  color: #21878F;
+}
+
+/* Skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Map mock */
+.map-bg {
+  background-color: #EAF2E8;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(200,220,200,0.4) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(200,220,200,0.4) 40px);
+}
+
+.map-road-h {
+  position: absolute;
+  height: 8px;
+  background: white;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+.map-road-v {
+  position: absolute;
+  width: 8px;
+  background: white;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+
+/* Chart bar */
+.chart-bar {
+  @apply rounded-t-sm transition-all duration-300;
+  background: rgba(33, 135, 143, 0.2);
+}
+.chart-bar.active {
+  background: #21878F;
+}
+
+/* Scrollable horizontal tabs */
+.scroll-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.scroll-tabs::-webkit-scrollbar { display: none; }
